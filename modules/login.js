@@ -43,7 +43,7 @@ internals.getSessionInfo = function getSessionInfo(host, callback) {
  * Obtain the password from the parameters. When not provided, ask the user to input it.
  **/
 internals.getPassword = function getPassword(parameters, callback) {
-  if(parameters.length) {
+  if(parameters.length && parameters[0]) {
     return callback(null, parameters[0]);
   }
 
