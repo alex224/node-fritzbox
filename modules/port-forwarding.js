@@ -149,7 +149,12 @@ module.exports.enable = function enableForwarding(options, params, callback) {
         return callback(err);
       }
 
-      internals.readHTML(body, callback);
+      if (body && body.trim.length > 0) {
+        internals.readHTML(body, callback);
+      } else {
+        module.exports.list(options, [], callback);
+      }
+
     });
   });
 };
@@ -186,7 +191,11 @@ module.exports.disable = function disableForwarding(options, params, callback) {
         return callback(err);
       }
 
-      internals.readHTML(body, callback);
+      if (body && body.trim.length > 0) {
+        internals.readHTML(body, callback);
+      } else {
+        module.exports.list(options, [], callback);
+      }
     });
   });
 };
